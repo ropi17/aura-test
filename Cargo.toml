@@ -2,13 +2,15 @@
 name = "aura_test"
 version = "0.1.0"
 edition = "2021"
-description = "Simple test harness for Aura API (gRPC) using aura_api_client"
-license = "MIT"
 
 [dependencies]
-aura_api_client = { git = "https://github.com/in-aura-we-trade/aura_api_client.git", features = ["client"] }
+# client-generic sudah otomatis include: client + api-types + tonic 0.14
+aura_api_client = {
+    git = "https://github.com/in-aura-we-trade/aura_api_client.git",
+    features = ["client-generic"]
+}
 
-tokio = { version = "1.38", features = ["full"] }
-tonic = "0.11"
-log = "0.4"
+tokio      = { version = "1.38", features = ["full"] }
+tonic      = "0.14"   # harus sama dengan versi yang dipakai aura_api_client
+log        = "0.4"
 env_logger = "0.10"
